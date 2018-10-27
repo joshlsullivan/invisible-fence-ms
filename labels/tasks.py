@@ -3,7 +3,7 @@ from celery import shared_task
 
 import os
 
-from django.http import JsonReponse
+from django.http import JsonResponse
 from django.core.mail import EmailMessage
 from django.conf import settings
 
@@ -20,7 +20,7 @@ def get_company(company_uuid, access_token):
     company = r.json()
     return company
 
-@shared_task()
+@shared_task
 def mail_labels():
     accounts = Account.objects.all()
     today = datetime.date.today()
@@ -79,4 +79,4 @@ def mail_labels():
     print("Email sent")
     os.remove('files/{}'.format(file_name))
     print("File removed")
-    return JsonReponse({'file_name': file_name})
+    return JsonResponse({'file_name': file_name})
