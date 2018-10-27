@@ -2,7 +2,6 @@ env/
 .env
 .idea/
 __pycache__/
-files/
 celerybeat-schedule.db
 dump.rdb
 .DS_Store
