@@ -79,4 +79,4 @@ def mail_labels():
     print("Email sent")
     os.remove('files/{}'.format(file_name))
     print("File removed")
-    return JsonResponse({'file_name': file_name})
+    return file_name
