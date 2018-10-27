@@ -20,7 +20,7 @@ client_secret = settings.CLIENT_SECRET
 
 authorize_url = 'https://go.servicem8.com/oauth/authorize'
 access_token_url = 'https://go.servicem8.com/oauth/access_token'
-redirect_uri = 'https://misllc.ngrok.io/authenticate/callback/'
+redirect_uri = 'https://invisible-fence-ms.herokuapp.com/authenticate/callback/'
 
 # Functions to retrieve info
 def get_vendors(access_token):
