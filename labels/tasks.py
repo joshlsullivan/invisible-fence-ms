@@ -3,7 +3,7 @@ from celery import shared_task
 
 import os
 
-from django.http import HttpResponse, JsonReponse
+from django.http import JsonReponse
 from django.core.mail import EmailMessage
 from django.conf import settings
 
