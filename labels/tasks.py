@@ -20,6 +20,14 @@ def get_company(company_uuid, access_token):
     company = r.json()
     return company
 
+def get_category(access_token):
+    url = 'https://api.servicem8.com/api_1.0/category.json'
+    headers = {'Authorization': 'Bearer '.format()}
+    categories = requests.get(url, headers=headers).json()
+    for category in categories:
+        if category['name'] == 'Battery Replacement':
+            return category['name']
+
 @shared_task
 def mail_labels():
     accounts = Account.objects.all()
@@ -47,7 +55,7 @@ def mail_labels():
             for job in jobs:
                 date = job['date']
                 datetime_object = datetime.datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
-                if today.year == datetime_object.year and today.month == datetime_object.month:
+                if today.year == datetime_object.year and today.month == datetime_object.month and get_category(account.access_token) == 'Battery Replacement':
                     print("Month and year match")
                     company_info = get_company(job['company_uuid'], account.access_token)
                     print(company_info)
