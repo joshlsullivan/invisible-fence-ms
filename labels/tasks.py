@@ -26,6 +26,7 @@ def get_category(access_token):
     categories = requests.get(url, headers=headers).json()
     for category in categories:
         if category['name'] == 'Battery Replacement':
+            print(category['name'])
             return category['name']
 
 @shared_task
@@ -56,7 +57,7 @@ def mail_labels():
                 date = job['date']
                 datetime_object = datetime.datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
                 if today.year == datetime_object.year and today.month == datetime_object.month and get_category(account.access_token) == 'Battery Replacement':
-                    print("Month and year match")
+                    print("Month, year, and category match")
                     company_info = get_company(job['company_uuid'], account.access_token)
                     print(company_info)
                     name = company_info['name']
