@@ -25,6 +25,7 @@ def get_category(access_token):
     headers = {'Authorization': 'Bearer '.format(access_token)}
     categories = requests.get(url, headers=headers).json()
     for category in categories:
+        print(category)
         if category['name'] == 'Battery Replacement':
             print(category['name'])
             return category['name']
