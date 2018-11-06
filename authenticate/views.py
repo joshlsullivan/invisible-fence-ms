@@ -36,7 +36,7 @@ def generate_password():
 
 class InitiateView(View):
     def get(self, request, *args, **kwargs):
-        return redirect('https://go.servicem8.com/oauth/authorize?response_type=code&client_id={}&scope=read_jobs%20vendor%20read_customers&redirect_uri={}'.format(client_id, redirect_uri))
+        return redirect('https://go.servicem8.com/oauth/authorize?response_type=code&client_id={}&scope=read_jobs%20vendor%20read_customers%20read_job_categories&redirect_uri={}'.format(client_id, redirect_uri))
 
 class CallbackView(View):
     def get(self, request, *args, **kwargs):
