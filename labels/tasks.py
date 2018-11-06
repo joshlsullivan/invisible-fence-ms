@@ -22,7 +22,7 @@ def get_company(company_uuid, access_token):
 
 def get_category(access_token):
     url = 'https://api.servicem8.com/api_1.0/category.json'
-    headers = {'Authorization': 'Bearer '.format()}
+    headers = {'Authorization': 'Bearer '.format(access_token)}
     categories = requests.get(url, headers=headers).json()
     for category in categories:
         if category['name'] == 'Battery Replacement':
