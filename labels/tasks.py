@@ -46,7 +46,7 @@ def mail_labels():
     account.refresh_token = new_tokens['refresh_token']
     account.save()
     print("Tokens updated")
-    jobs_url = 'https://api.servicem8.com/api_1.0/job.json'
+    jobs_url = "https://api.servicem8.com/api_1.0/job.json?%24filter=category_uuid%20eq%20'022eb836-d5a9-4704-8541-fffc32e14ebb'"
     headers = {'Authorization': 'Bearer {}'.format(account.access_token)}
     jobs = requests.get(jobs_url, headers=headers).json()
     with open('files/{}'.format(file_name), 'w+') as csv_file:
@@ -56,7 +56,7 @@ def mail_labels():
         for job in jobs:
             date = job['date']
             datetime_object = datetime.datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
-            if today.year == datetime_object.year and today.month == datetime_object.month and job['category_uuid'] == get_category(new_tokens['access_token']):
+            if today.year == datetime_object.year and today.month == datetime_object.month:
                 print("Month, year, and category match")
                 company_info = get_company(job['company_uuid'], account.access_token)
                 print(company_info)
