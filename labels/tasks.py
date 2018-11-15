@@ -56,7 +56,7 @@ def mail_labels():
         for job in jobs:
             date = job['date']
             datetime_object = datetime.datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
-            if today.year == datetime_object.year and today.month == datetime_object.month and job['category_uuid'] = get_category(new_tokens['access_token']):
+            if today.year == datetime_object.year and today.month == datetime_object.month and job['category_uuid'] == get_category(new_tokens['access_token']):
                 print("Month, year, and category match")
                 company_info = get_company(job['company_uuid'], account.access_token)
                 print(company_info)
