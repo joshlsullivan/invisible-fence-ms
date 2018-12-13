@@ -49,35 +49,34 @@ def mail_labels():
     jobs_url = "https://api.servicem8.com/api_1.0/job.json?%24filter=category_uuid%20eq%20'022eb836-d5a9-4704-8541-fffc32e14ebb'"
     headers = {'Authorization': 'Bearer {}'.format(account.access_token)}
     jobs = requests.get(jobs_url, headers=headers).json()
-    if jobs.status_code == requests.codes.ok:
-        with open('files/{}'.format(file_name), 'w+') as csv_file:
-            fieldnames = ['name', 'street', 'city', 'state', 'zip_code', 'job_description']
-            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-            writer.writeheader()
-            for job in jobs:
-                date = job['date']
-                datetime_object = datetime.datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
-                if today.year == datetime_object.year and today.month == datetime_object.month:
-                    print("Month, year, and category match")
-                    company_info = get_company(job['company_uuid'], account.access_token)
-                    print(company_info)
-                    name = company_info['name']
-                    street = company_info['address_street']
-                    city = company_info['address_city']
-                    state = company_info['address_state']
-                    zip_code = company_info['address_postcode']
-                    job_description = job['job_description']
-                    print("Creating labels")
-                    writer.writerow(
-                        {
-                            'name': name,
-                            'street': street,
-                            'city': city,
-                            'state': state,
-                            'zip_code': zip_code,
-                            'job_description': job_description
-                        }
-                    )
+    with open('files/{}'.format(file_name), 'w+') as csv_file:
+        fieldnames = ['name', 'street', 'city', 'state', 'zip_code', 'job_description']
+        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+        writer.writeheader()
+        for job in jobs:
+            date = job['date']
+            datetime_object = datetime.datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
+            if today.year == datetime_object.year and today.month == datetime_object.month:
+                print("Month, year, and category match")
+                company_info = get_company(job['company_uuid'], account.access_token)
+                print(company_info)
+                name = company_info['name']
+                street = company_info['address_street']
+                city = company_info['address_city']
+                state = company_info['address_state']
+                zip_code = company_info['address_postcode']
+                job_description = job['job_description']
+                print("Creating labels")
+                writer.writerow(
+                    {
+                        'name': name,
+                        'street': street,
+                        'city': city,
+                        'state': state,
+                        'zip_code': zip_code,
+                        'job_description': job_description
+                    }
+                )
     else:
         print("Cannon process jobs")
     email = EmailMessage(
