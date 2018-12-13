@@ -77,8 +77,6 @@ def mail_labels():
                         'job_description': job_description
                     }
                 )
-    else:
-        print("Cannon process jobs")
     email = EmailMessage(
         'Monthly Label List',
         'Hi there, please find your monthly label list attached to this email.\n\nThank you.\n\nJosh Sullivan\nMagnolia Innovative Solutions',
