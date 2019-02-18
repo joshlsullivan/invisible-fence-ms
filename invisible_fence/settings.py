@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')o8t*7hm6ta-&752@y(ojd5epiv*@&ni3=4red=^d)j7kzma7%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['https://invisible-fence-ms.herokuapp.com', 'localhost', 'misllc.ngrok.io']
+ALLOWED_HOSTS = ['https://38404.misllc.com', 'localhost', 'misllc.ngrok.io']
 
 ADMINS = [
     ('Josh Sullivan', 'josh@misllc.com'),
