@@ -6,3 +6,4 @@ celerybeat-schedule.db
 dump.rdb
 .DS_Store
 venv/
+.vscode/

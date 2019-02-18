@@ -107,8 +107,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'invisible_fence',
-        'USER': 'joshsullivan',
-        'PASSWORD': '',
+        'USER': 'joshlsullivan',
+        'PASSWORD': '2136Fish!',
         'HOST': 'localhost',
         'PORT': 5432
     }
