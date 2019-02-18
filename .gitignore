@@ -5,3 +5,4 @@ __pycache__/
 celerybeat-schedule.db
 dump.rdb
 .DS_Store
+venv/
