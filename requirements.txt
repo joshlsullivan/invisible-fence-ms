@@ -12,7 +12,7 @@ django-timezone-field==3.0
 gunicorn==19.9.0
 idna==2.8
 kombu==4.3.0
-# psycopg2==2.7.7
+psycopg2==2.8.2
 psycopg2-binary==2.7.7
 python-crontab==2.3.6
 python-dateutil==2.8.0
