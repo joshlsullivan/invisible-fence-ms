@@ -44,11 +44,13 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'America/New_York'
 
 # Sendgrid
-EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST = 'smtp.mailgun.org'
 EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
-EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
+# EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
+SENDGRID_API_KEY = os.environ['EMAIL_HOST_PASSWORD']
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
 
 AUTH_USER_MODEL = 'user.User'
 # Application definition
